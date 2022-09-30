@@ -6,8 +6,7 @@ import LoginScreen from '../screens/LoginScreen';
 import Header from '../components/Header';
 import {connect} from 'react-redux';
 import {logout} from '../store/actions/user';
-import RegisterModal from '../modals/RegisterModal';
-import {DropDownComponentProvider} from '../modals/DropDownComponentProvider';
+ import {DropDownComponentProvider} from '../modals/DropDownComponentProvider';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,13 +31,7 @@ function Navigation(props) {
                 component={HomeScreen}
               />
             </Stack.Group>
-            <Stack.Group screenOptions={{presentation: 'modal'}}>
-              <Stack.Screen
-                options={{header: modalHeader}}
-                name="RegisterModal"
-                component={RegisterModal}
-              />
-            </Stack.Group>
+          
           </Stack.Navigator>
         ) : (
           <Stack.Navigator>
