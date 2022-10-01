@@ -3,6 +3,7 @@ import { styles } from "./styles";
 import DatePicker from "react-native-datepicker";
 import { View, Text, Dimensions,Image } from "react-native";
 import Button from "../Button";
+import convertDate from "../../Utils/convertDate";
 export default function Details({ imageUrl ="https://images2.imgbox.com/a9/9a/NXVkTZCE_o.png'" ,data , navigation }) {
 
 console.log(navigation)
@@ -25,7 +26,7 @@ const isotoLocalDate = (date) => {
           {data.details}
         </Text>
         <Text style={styles.textDate}>
-          {isotoLocalDate(data.date_utc)}
+          {convertDate(data.date_utc)}
         </Text>
       </View>
       <View style={styles.buttonArea}>

@@ -5,7 +5,6 @@ import { styles } from "./styles";
 import { connect } from "react-redux";
 import Details from "../../components/Details"; 
 import { queryLaunch } from "../../store/actions/launches";
-
 function DetailScreen(props) {
   const renderItem = ({ item }) => (
     <Details navigation={props.navigation} imageUrl={item.links?.patch.small} data={item}/>

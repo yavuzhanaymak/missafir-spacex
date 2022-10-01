@@ -8,8 +8,8 @@ export const styles = StyleSheet.create({
   },
  imageArea:
  {
-  flex:1
- },
+  marginTop:20,
+  },
  image:
  {
   width:Dimensions.get('window').width,

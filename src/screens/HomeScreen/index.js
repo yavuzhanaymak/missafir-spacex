@@ -8,20 +8,17 @@ import { queryLaunch } from "../../store/actions/launches";
 import Logo from "../../components/Logo";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import convertDatetoISO from "../../Utils/convertDateToISO";
 function HomeScreen(props) {
   const [fDate, setfDate] = useState("");
   const [eDate, seteDate] = useState("");
 
   function getFirstDate(date) {
-    const isoDate = new Date(date);
-
-    setfDate(isoDate.toISOString());
+    setfDate(convertDatetoISO(date));
   }
 
   function getEndDate(date) {
-    const isoDate = new Date(date);
-
-    seteDate(isoDate.toISOString());
+    seteDate(convertDatetoISO(date));
   }
 
   const getQueryHandler = async () => {
