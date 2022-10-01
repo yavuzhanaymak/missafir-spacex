@@ -18,7 +18,7 @@ export default function Input({
         {icon && (
           <Image source={icon} style={{tintColor: iconColor || 'black'}} />
         )}
-        <Text style={styles.textStyle}>{text}:</Text>
+        <Text style={styles.textStyle}>{text}</Text>
       </View>
       <TextInput
         secureTextEntry={password}
