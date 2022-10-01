@@ -52,12 +52,15 @@ function HomeScreen(props) {
             date={eDate}
           />
         </View>
-<View style={styles.inputArea}>
-  <Input text={"Name"} placeholder={"Name"} />
-
-</View>
+        <View style={styles.inputArea}>
+          <Input text={"Name"} placeholder={"Name"} />
+        </View>
         <View style={styles.buttonArea}>
-          <Button action={()=>getQueryHandler()}  color="#005288" text={"Search"} />
+          <Button
+            action={() => getQueryHandler()}
+            color="#005288"
+            text={"Search"}
+          />
         </View>
       </View>
     </View>

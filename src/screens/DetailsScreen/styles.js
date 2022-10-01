@@ -3,9 +3,7 @@ import {Dimensions, StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection:"row",
+   
     width:Dimensions.get('window').width,
   },
   flatlist: {flexGrow: 1, paddingBottom: 20},

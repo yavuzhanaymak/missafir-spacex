@@ -17,7 +17,7 @@ export const queryLaunch = (fdate, edate) => {
           },
         };
         const res = await getApi.QueryLaunches(query);
-        result = res.data.docs;
+        result = res.data;
         console.log(res.data.totalDocs);
       } catch (e) {
         alert("Something went wrong!");

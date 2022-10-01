@@ -5,7 +5,7 @@ import HomeScreen from "../screens/HomeScreen";
 import DetailsScreen from "../screens/DetailsScreen";
 import { connect } from "react-redux";
 import { logout } from "../store/actions/user";
-
+import MoreDetailsScreen from "../screens/MoreDetailsScreen";
 const Stack = createNativeStackNavigator();
 
 function Navigation(props) {
@@ -21,9 +21,16 @@ function Navigation(props) {
         </Stack.Group>
         <Stack.Group>
           <Stack.Screen
-            options={{ headerShown: false }}
+            options={{ title: "Details SpaceX Launches" }}
             name="DetailScreen"
             component={DetailsScreen}
+          />
+        </Stack.Group>
+        <Stack.Group>
+          <Stack.Screen
+            options={{ title: "More Details" }}
+            name="moreDetailsScreen"
+            component={MoreDetailsScreen}
           />
         </Stack.Group>
       </Stack.Navigator>

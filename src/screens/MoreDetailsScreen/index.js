@@ -1,25 +1,19 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, FlatList,Image } from "react-native";
 import { styles } from "./styles";
 import { connect } from "react-redux";
 import Details from "../../components/Details"; 
 import { queryLaunch } from "../../store/actions/launches";
-
-function DetailScreen(props) {
-  const renderItem = ({ item }) => (
-    <Details navigation={props.navigation} imageUrl={item.links?.patch.small} data={item}/>
-  );
-   return (
+import Logo from "../../components/Logo";
+function MoreDetails(props) {
+  console.log(props);
+   return ( 
     <View style={styles.container}>
-      <FlatList
-        data={props.queryData?.docs}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
-   
- 
-    </View>
+<View style={styles.imageArea}>
+  <Image source={{uri:props.route.params?.data?.links?.patch?.large}} style={styles.image}/>
+  </View> 
+     </View>
   );
 }
 
@@ -36,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(MoreDetails);
