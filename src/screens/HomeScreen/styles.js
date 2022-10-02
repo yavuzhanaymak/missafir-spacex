@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   inputArea:
   {
-    width: Dimensions.get("window").width / 1.2,
+    width: Dimensions.get("window").width,
   },
   buttonArea:
   {

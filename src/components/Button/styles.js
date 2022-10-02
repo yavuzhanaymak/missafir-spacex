@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet,Dimensions} from 'react-native';
 
 export const styles = StyleSheet.create({
   buttonStyle: {
@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     fontSize: 18,
+    textAlign: 'center',
   },
   icon: {
     marginRight: 10,

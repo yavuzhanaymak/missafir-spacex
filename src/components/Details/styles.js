@@ -1,10 +1,15 @@
 import { StyleSheet } from "react-native";
-
+import { responsiveFontSize } from "../../Utils/responsiveFontSize";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
     height: 150,
+    borderColor: "#e2e2e2",
+    borderWidth: 1,
+   
+
+ 
   },
   imageArea: {
     flex: 1,
@@ -19,7 +24,7 @@ export const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "center",
     alignItems: "center",
-    padding:10
+    padding: 10,
   },
   buttonArea: {
     flex: 1,
@@ -27,6 +32,30 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  textDetail: {
+  textArea: {
+    flex: 2,
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    padding: 10,
+    
   },
+  textName: {
+    fontSize: responsiveFontSize(15),
+    fontWeight: "400",
+  },
+  textDetail: {
+    fontSize: responsiveFontSize(12),
+    fontWeight: "300",
+    color:'#000'
+   },
+   textFlightNumber: {
+    fontSize: responsiveFontSize(10),
+    fontWeight: "300",
+    color: "#005288",
+    },
+    textDate: {
+      fontSize: responsiveFontSize(10),
+      fontWeight: "300",
+      color: "#005288",
+      },
 });

@@ -9,15 +9,12 @@ export default function Input({
   password,
   placeholder,
   disable,
-  icon,
-  iconColor,
+
 }) {
   return (
     <View style={styles.inputWrapper}>
       <View style={styles.header}>
-        {icon && (
-          <Image source={icon} style={{tintColor: iconColor || 'black'}} />
-        )}
+       
         <Text style={styles.textStyle}>{text}</Text>
       </View>
       <TextInput

@@ -18,4 +18,10 @@ export const styles = StyleSheet.create({
     width: 60,
     resizeMode: 'cover',
   },
+  socialArea:
+  {
+   flexDirection:'row',
+   justifyContent:'space-around',
+ 
+  },
 });

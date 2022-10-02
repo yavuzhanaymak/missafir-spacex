@@ -1,10 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View,Dimensions} from "react-native";
 import { styles } from "./styles";
 import { connect } from "react-redux";
 import DateInput from "../../components/DateInput";
-import { queryLaunch } from "../../store/actions/launches";
+import { queryLaunch, queryLaunchWithName } from "../../store/actions/launches";
 import Logo from "../../components/Logo";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
@@ -12,6 +12,7 @@ import convertDatetoISO from "../../Utils/convertDateToISO";
 function HomeScreen(props) {
   const [fDate, setfDate] = useState("");
   const [eDate, seteDate] = useState("");
+  const [name, setName] = useState("");
 
   function getFirstDate(date) {
     setfDate(convertDatetoISO(date));
@@ -22,7 +23,7 @@ function HomeScreen(props) {
   }
 
   const getQueryHandler = async () => {
-    const response = await props.onQueryLaunch(fDate, eDate);
+    const response = name === "" ? await props.onQueryLaunch(fDate, eDate) : await props.onQueryLaunchwithName(fDate, eDate, name);
     props.navigation.navigate("DetailScreen");
   };
 
@@ -50,13 +51,14 @@ function HomeScreen(props) {
           />
         </View>
         <View style={styles.inputArea}>
-          <Input text={"Name"} placeholder={"Name"} />
+          <Input onChange={(e)=>setName(e)} text={"Name"} placeholder={"Name"} />
         </View>
         <View style={styles.buttonArea}>
           <Button
             action={() => getQueryHandler()}
             color="#005288"
             text={"Search"}
+            width={Dimensions.get("window").width * 0.9}
           />
         </View>
       </View>
@@ -73,6 +75,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onQueryLaunch: (fDate, eDate) => dispatch(queryLaunch(fDate, eDate)),
+    onQueryLaunchwithName: (fDate, eDate,name) => dispatch(queryLaunchWithName(fDate, eDate, name)),
+
   };
 };
 

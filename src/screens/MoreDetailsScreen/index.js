@@ -3,16 +3,13 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  TouchableOpacity,
-  FlatList,
+
   Image,
   Linking,
 } from "react-native";
 import { styles } from "./styles";
 import { connect } from "react-redux";
-import Details from "../../components/Details";
 import { queryLaunch } from "../../store/actions/launches";
-import Logo from "../../components/Logo";
 import convertDate from "../../Utils/convertDate";
 import SocialButton from "../../components/SocialButton";
 function MoreDetails(props) {
@@ -29,31 +26,34 @@ function MoreDetails(props) {
         />
       </View>
 
-      <View style={styles.textArea}>
-        <Text style={styles.textName}>{data?.name}</Text>
-        <Text style={styles.textName}>Flight Number {data?.flight_number}</Text>
-        <Text style={styles.textName}>
-          Launch Date {convertDate(data?.date_local)}
-        </Text>
-        <Text style={styles.textName}>{data?.details}</Text>
-      </View>
       <View style={styles.socialArea}>
-        <SocialButton
+     { data?.links.webcast &&  <SocialButton
           action={() => PressedLinkToOut(data?.links.webcast)}
           type="youtube"
           links={data?.links.webcast}
-        />
-        <SocialButton
+        />}
+      { data?.links.wikipedia && <SocialButton
           action={() => PressedLinkToOut(data?.links.wikipedia)}
           type="wikipedia"
           links={data?.links.wikipedia}
-        />
+        />}
 
-        <SocialButton
+       {data?.links.presskit && <SocialButton
           action={() => PressedLinkToOut(data?.links.presskit)}
           type="nasa"
-        />
+        />}
       </View>
+      <View style={styles.textArea}>
+        <Text style={styles.textName}>{data?.name}</Text>
+        <Text style={styles.textFlightNumber}>
+          Flight Number {data?.flight_number}
+        </Text>
+        <Text style={styles.textDate}>
+          Launch Date {convertDate(data?.date_local)}
+        </Text>
+        <Text style={styles.textDetails}>{data?.details}</Text>
+      </View>
+      
     </View>
   );
 }

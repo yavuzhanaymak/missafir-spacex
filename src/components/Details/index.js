@@ -6,12 +6,7 @@ import Button from "../Button";
 import convertDate from "../../Utils/convertDate";
 export default function Details({ imageUrl ="https://images2.imgbox.com/a9/9a/NXVkTZCE_o.png'" ,data , navigation }) {
 
-console.log(navigation)
-const isotoLocalDate = (date) => {
- const convertDate = new Date(date).toLocaleString('en-US', { 'dd/MM/yyyy': 'numeric' });
 
-  return convertDate;
-};
 
   return (
     <View style={styles.container}>
@@ -22,7 +17,10 @@ const isotoLocalDate = (date) => {
         <Text style={styles.textName}>
         { data.name}
         </Text>
-        <Text numberOfLines={2} style={styles.textDetail}>
+        <Text style={styles.textFlightNumber}>
+       Flight Number { data.flight_number}
+        </Text>
+        <Text numberOfLines={3} style={styles.textDetail}>
           {data.details}
         </Text>
         <Text style={styles.textDate}>
@@ -30,7 +28,7 @@ const isotoLocalDate = (date) => {
         </Text>
       </View>
       <View style={styles.buttonArea}>
-<Button text="More" action={()=>navigation.navigate('moreDetailsScreen',{data})} />
+<Button text="More"  color="#005288"action={()=>navigation.navigate('moreDetailsScreen',{data})} />
       </View>
     </View>
   );
