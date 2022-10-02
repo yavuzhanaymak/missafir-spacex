@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React, { useState } from "react";
-import { View,Dimensions} from "react-native";
+import { View, Dimensions } from "react-native";
 import { styles } from "./styles";
 import { connect } from "react-redux";
 import DateInput from "../../components/DateInput";
@@ -10,8 +10,8 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import convertDatetoISO from "../../Utils/convertDateToISO";
 function HomeScreen(props) {
-  const [fDate, setfDate] = useState("");
-  const [eDate, seteDate] = useState("");
+  const [fDate, setfDate] = useState("2018.10.02");
+  const [eDate, seteDate] = useState('2022.10.02');
   const [name, setName] = useState("");
 
   function getFirstDate(date) {
@@ -23,8 +23,15 @@ function HomeScreen(props) {
   }
 
   const getQueryHandler = async () => {
-    const response = name === "" ? await props.onQueryLaunch(fDate, eDate) : await props.onQueryLaunchwithName(fDate, eDate, name);
-    props.navigation.navigate("DetailScreen");
+    try {
+      const response =
+        name === ""
+          ? await props.onQueryLaunch(fDate, eDate)
+          : await props.onQueryLaunchwithName(fDate, eDate, name);
+      props.navigation.navigate("DetailScreen");
+    } catch (error) {
+      alert("Something went wrong");
+    }
   };
 
   return (
@@ -51,7 +58,11 @@ function HomeScreen(props) {
           />
         </View>
         <View style={styles.inputArea}>
-          <Input onChange={(e)=>setName(e)} text={"Name"} placeholder={"Name"} />
+          <Input
+            onChange={(e) => setName(e)}
+            text={"Name"}
+            placeholder={"Name"}
+          />
         </View>
         <View style={styles.buttonArea}>
           <Button
@@ -75,8 +86,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onQueryLaunch: (fDate, eDate) => dispatch(queryLaunch(fDate, eDate)),
-    onQueryLaunchwithName: (fDate, eDate,name) => dispatch(queryLaunchWithName(fDate, eDate, name)),
-
+    onQueryLaunchwithName: (fDate, eDate, name) =>
+      dispatch(queryLaunchWithName(fDate, eDate, name)),
   };
 };
 

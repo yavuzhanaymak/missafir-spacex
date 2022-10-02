@@ -15,6 +15,12 @@ export const queryLaunch = (fdate, edate) => {
               $lte: edate,
 
             },
+            options:{
+              limit:50,
+              sort:{
+                 date_utc:"asc"
+              }
+           }
           },
         };
         const res = await getApi.QueryLaunches(query);
