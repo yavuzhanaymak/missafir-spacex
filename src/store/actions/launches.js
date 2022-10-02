@@ -47,6 +47,12 @@ export const queryLaunchWithName = (fdate, edate, Name) => {
               $search: Name
             }
           },
+          options:{
+            limit:50,
+            sort:{
+               date_utc:"asc"
+            }
+         }
         };
         const res = await getApi.QueryLaunches(query);
         result = res.data;
