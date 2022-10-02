@@ -9,6 +9,7 @@ import Logo from "../../components/Logo";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import convertDatetoISO from "../../Utils/convertDateToISO";
+import Loading from "../../components/Loading";
 function HomeScreen(props) {
   const [fDate, setfDate] = useState("2018.10.02");
   const [eDate, seteDate] = useState('2022.10.02');
@@ -71,6 +72,7 @@ function HomeScreen(props) {
             text={"Search"}
             width={Dimensions.get("window").width * 0.9}
           />
+        
         </View>
       </View>
     </View>

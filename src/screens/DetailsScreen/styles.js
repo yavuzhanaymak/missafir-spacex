@@ -82,4 +82,16 @@ export const styles = StyleSheet.create({
     margin: 10,
     width: '80%',
   },
+  noData:
+  {
+justifyContent:'center',
+alignItems:'center',
+flex:1
+  },
+  noDataText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 20,
+  },
 });

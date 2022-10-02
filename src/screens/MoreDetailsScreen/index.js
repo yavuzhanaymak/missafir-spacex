@@ -1,24 +1,47 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-
-  Image,
-  Linking,
-} from "react-native";
+import { View, Text, Image, Linking } from "react-native";
 import { styles } from "./styles";
 import { connect } from "react-redux";
 import { queryLaunch } from "../../store/actions/launches";
 import convertDate from "../../Utils/convertDate";
 import SocialButton from "../../components/SocialButton";
+import { ScrollView } from "react-native-gesture-handler";
 function MoreDetails(props) {
   const PressedLinkToOut = async (url) => {
     await Linking.openURL(url);
   };
+
+  function SocialLinks() {
+    return (
+      <View style={styles.socialArea}>
+        {data?.links.webcast && (
+          <SocialButton
+            action={() => PressedLinkToOut(data?.links.webcast)}
+            type="youtube"
+            links={data?.links.webcast}
+          />
+        )}
+        {data?.links.wikipedia && (
+          <SocialButton
+            action={() => PressedLinkToOut(data?.links.wikipedia)}
+            type="wikipedia"
+            links={data?.links.wikipedia}
+          />
+        )}
+
+        {data?.links.presskit && (
+          <SocialButton
+            action={() => PressedLinkToOut(data?.links.presskit)}
+            type="nasa"
+          />
+        )}
+      </View>
+    );
+  }
   const data = props.route.params.data;
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.imageArea}>
         <Image
           source={{ uri: data?.links?.patch?.large }}
@@ -26,23 +49,7 @@ function MoreDetails(props) {
         />
       </View>
 
-      <View style={styles.socialArea}>
-     { data?.links.webcast &&  <SocialButton
-          action={() => PressedLinkToOut(data?.links.webcast)}
-          type="youtube"
-          links={data?.links.webcast}
-        />}
-      { data?.links.wikipedia && <SocialButton
-          action={() => PressedLinkToOut(data?.links.wikipedia)}
-          type="wikipedia"
-          links={data?.links.wikipedia}
-        />}
-
-       {data?.links.presskit && <SocialButton
-          action={() => PressedLinkToOut(data?.links.presskit)}
-          type="nasa"
-        />}
-      </View>
+  <SocialLinks />
       <View style={styles.textArea}>
         <Text style={styles.textName}>{data?.name}</Text>
         <Text style={styles.textFlightNumber}>
@@ -53,8 +60,7 @@ function MoreDetails(props) {
         </Text>
         <Text style={styles.textDetails}>{data?.details}</Text>
       </View>
-      
-    </View>
+    </ScrollView>
   );
 }
 

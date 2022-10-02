@@ -60,4 +60,9 @@ export const styles = StyleSheet.create({
     marginTop:20,
   },
 
+  textArea:
+  {
+    padding:10,
+  }
+
 });
